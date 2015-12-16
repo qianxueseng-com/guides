@@ -1,0 +1,24 @@
+{
+  "name": "guides",
+  "version": "1.0.0",
+  "description": "frontend guides",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "metalsmith"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qianxueseng-com/guides.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qianxueseng-com/guides/issues"
+  },
+  "homepage": "https://github.com/qianxueseng-com/guides#readme",
+  "devDependencies": {
+    "metalsmith": "^2.1.0",
+    "metalsmith-markdown": "^0.2.1"
+  }
+}
