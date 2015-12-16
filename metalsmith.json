@@ -6,6 +6,9 @@
   "source": "wiki",
   "destination": "build",
   "plugins": {
-    "metalsmith-markdown": {}
+    "metalsmith-markdown": {},
+    "metalsmith-ignore": [
+      ".git"
+    ]
   }
 }
