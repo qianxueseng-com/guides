@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "metalsmith"
+    "build": "metalsmith",
+    "publish": "git subtree push --prefix build/ origin gh-pages --force"
   },
   "repository": {
     "type": "git",
