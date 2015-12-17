@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pull-wiki": "cd wiki && git pull && cd ..",
-    "build": "metalsmith && git add . && git commit -m 'update'",
-    "publish": "git subtree push --prefix build origin gh-pages"
+    "build-wiki": "metalsmith && git add . && git commit -m 'update'",
+    "push-gh-pages": "git subtree push --prefix build origin gh-pages",
+    "publish-wiki": "npm run pull-wiki && npm run build-wiki && npm run push-gh-pages"
   },
   "repository": {
     "type": "git",
