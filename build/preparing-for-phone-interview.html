@@ -1,4 +1,368 @@
-<h2 id="-">基本知识</h2>
+<h1 id="the-five-essential-phone-screen-questions">The Five Essential Phone-Screen Questions</h1>
+<p>不管前端后端，最基本的电面知识</p>
+<p>I&#39;ve been on a lot of SDE interview loops lately where the candidate failed miserably: not-inclined votes all around, even from the phone screeners who brought the person in initially.</p>
+<p>It&#39;s usually pretty obvious when the candidate should have been eliminated during the phone screens. Well, it&#39;s obvious in retrospect, anyway: during the interviews, we find some horrible flaw in the candidate which, had anyone thought to ask about it during the phone screen, would surely have disqualified the person.</p>
+<p>But we didn&#39;t ask. So the candidate came in for interviews and wound up wasting everyone&#39;s time.</p>
+<h2 id="antipatterns">Antipatterns</h2>
+<p>I&#39;ve done informal postmortems on at least a hundred phone screens, many of them my own. Whenever a candidate bombs the interviews, I want to know what went wrong with the screen. And guess what? A pattern has emerged. Two patterns, actually.</p>
+<p>The first pattern is that for most failed phone screens, the candidate did most of the talking. The screener only asked about stuff on the candidate&#39;s resume, and the candidate was able to talk with passion and enthusiasm about this incredibly cool thing they did, blah blah blah, and the screener was duly impressed.</p>
+<p>That&#39;s how many/most phone screens go wrong.</p>
+<p>The right way to do a phone screen is to do most of the talking, or at least the driving. You look for specific answers, and you guide the conversation along until you&#39;ve got the answer or you&#39;ve decided the candidate doesn&#39;t know it. Whenever I forget this, and get lazy and let the candidate drone on about their XML weasel-pin connector project, I wind up bringing in a dud.</p>
+<p>The second pattern is that one-trick ponies only know one trick. Candidates who have programmed mostly in a single language (e.g. C/C++), platform (e.g. AIX) or framework (e.g. J2EE) usually have major, gaping holes in their skills lineup. These candidates will fail their interviews here because our interviews cover a broad range of skill areas.</p>
+<p>These two phone screen (anti-)patterns are related: if you only ask the candidate about what they know, you&#39;ve got a fairly narrow view of their abilities. And you&#39;re setting yourself up for a postmortem on your phone screen.</p>
+<h2 id="acid-tests">Acid Tests</h2>
+<p>In an effort to make life simpler for phone screeners, I&#39;ve put together this list of Five Essential Questions that you need to ask during an SDE screen. They won&#39;t guarantee that your candidate will be great, but they will help eliminate a huge number of candidates who are slipping through our process today.</p>
+<p>These five areas are litmus tests -- very good ones. I&#39;ve chosen them based on the following criteria:</p>
+<p>1) They&#39;re universal - every programmer needs to know them, regardless of experience, so you can use them in all SDE phone screens, from college hires through 30-year veterans.</p>
+<p>2) They&#39;re quick - they&#39;re areas that you can probe very quickly, without eating too much into your phone-screen time. Each area can be assessed with 1 to 5 minutes of &quot;weeder questions&quot;, and each area has almost unlimited weeder questions to choose from.</p>
+<p>3) They&#39;re predictors - there are certain common &quot;SDE profiles&quot; that are easy to spot because they tend to fail (and I mean really fail) in one or more of these five areas. So the areas are amazingly good at weeding out bad candidates.</p>
+<p>You have to probe all five areas; you can&#39;t skip any of them. Each area is a proxy for a huge body of knowledge, and failing it very likely means failing the interviews, even though the candidate did fine in the other areas.</p>
+<p>Without further ado, here they are: The Five Essential Questions for the first phone-screen with an SDE candidate:</p>
+<p>1) Coding. The candidate has to write some simple code, with correct syntax, in C, C++, or Java. 
+2) OO design. The candidate has to define basic OO concepts, and come up with classes to model a simple problem.
+3) Scripting and regexes. The candidate has to describe how to find the phone numbers in 50,000 HTML pages. 
+4) Data structures. The candidate has to demonstrate basic knowledge of the most common data structures.
+5) Bits and bytes. The candidate has to answer simple questions about bits, bytes, and binary numbers.</p>
+<p>Please understand:   what I&#39;m looking for here is a total vacuum in one of these areas. It&#39;s OK if they struggle a little and then figure it out. It&#39;s OK if they need some minor hints or prompting. I don&#39;t mind if they&#39;re rusty or slow. What you&#39;re looking for is candidates who are utterly clueless, or horribly confused, about the area in question.</p>
+<p>For example, you may find a candidate who decides that a Vehicle class should be a subclass of ParkingGarage, since garages contain cars. This is just busted, and it&#39;s un-fixable in any reasonable amount of training time.</p>
+<p>Or a candidate might decide, when asked to search for phone numbers in a bunch of text files, to write a 2000-line C++ program, at which point you discover they&#39;ve never heard of &quot;grep&quot;, or at least never used it.</p>
+<p>When a candidate is totally incompetent in one of these Big Five areas, the chances are very high that they&#39;ll bomb horribly when presented with our typical interview questions. Last week I interviewed an SDE-2 candidate who made both of the mistakes above (a vehicle inheriting from garage, and the 2000-line C++ grep implementation.) He was by no means unusual, even for the past month. We&#39;ve been bringing in many totally unqualified candidates.</p>
+<p>The rest of this document describes each area in more detail, and gives example questions, and solutions.</p>
+<h3 id="area-number-one-coding">Area Number One: Coding</h3>
+<p>The candidate has to write some code. Give them a coding problem that requires writing a short, straightforward function. They can write it in whatever language they like, as long as they don&#39;t just call a library function that does it for them.</p>
+<p>It should be a trivial problem, one that even a slow candidate can answer in 5 minutes or less.</p>
+<p>(If the candidate seems insulted by the thought of having to get their hands dirty with a trivial coding question, after all their years of experience, patents, etc., tell them it&#39;s required procedure and ask them to humor you. If they refuse, tell them we only interview people who can demonstrate coding skills over the phone, thank them for their time, and end the call.)</p>
+<p>Give them a few minutes to write and hand-simulate the code. Tell them they need to make it syntactically correct and complete. Make them read the code to you over the phone. Copy down what they read back. Put it into your writeup. If they&#39;re sloppy, or don&#39;t want to give you exact details, give them one more chance to correct it, and then go with Not Inclined.</p>
+<p>(Note added 10/6/04) -- another good approach being used by many teams is to give the candidate &quot;homework&quot;. E.g. you can give them an hour to solve some coding problem (harder than the ones below) and email the solution to you. Works like a charm. Definitely preferable to reading code over the phone.</p>
+<p>Anyway, here are some examples. I&#39;ve given solutions in Java, mostly. I&#39;ve gone back and forth on accepting solutions in other languages (e.g. Ruby, Perl, Python), and I&#39;ve decided that candidates need to be able to code their answers in C, C++ or Java. It&#39;s wonderful if they know other languages, and in fact those who do tend to do a lot better overall. But to be an Amazon SDE, you need to prove you can do C++ or Java first.</p>
+<p>Example 1:   Write a function to reverse a string.</p>
+<p>Example Java code:</p>
+<pre><code>public static String reverse ( String s ) {
+    int length = s.length(), last = length - 1;
+    char[] chars = s.toCharArray();
+    for ( int i = 0; i &lt; length/2; i++ ) {
+        char c = chars[i];
+        chars[i] = chars[last - i];
+        chars[last - i] = c;
+    }
+    return new String(chars);
+}
+</code></pre><p>Example output for &quot;Madam, I&#39;m Adam&quot;:   madA m&#39;I ,madaM</p>
+<p>Example 2:  Write function to compute Nth fibonacci number:</p>
+<p>Java and C/C++:</p>
+<pre><code>static long fib(int n) {
+    return n &lt;= 1 ? n : fib(n-1) + fib(n-2);
+}
+</code></pre><p>(Java Test harness)</p>
+<pre><code>public static void main ( String[] args ) {
+    for ( int i = 0; i &lt; 10; i++ ) {
+        System.out.print ( fib(i) + &quot;, &quot; );
+    }
+    System.out.println ( fib(10) );
+}
+</code></pre><p>(C/C++ Test Harness)</p>
+<pre><code>main () {
+    for ( int i = 0; i &lt; 10; i++ ) {
+        printf ( &quot;%d, &quot;, fib(i) );
+    }
+    printf ( &quot;%d\n&quot;, fib(10) );
+}
+</code></pre><p>Test harness output:  </p>
+<p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55</p>
+<p>Example 3:  Print out the grade-school multiplication table up to 12x12</p>
+<p>Java: (similar for C/C++)</p>
+<pre><code>public static void multTables ( int max )
+{
+    for ( int i = 1; i &lt;= max; i++ ) {
+        for ( int j = 1; j &lt;= max; j++ ) {
+            System.out.print ( String.format ( &quot;%4d&quot;, j * i ));
+        }
+        System.out.println();
+    }
+}
+</code></pre><p>Example output:</p>
+<p>   1   2   3   4   5   6   7   8   9  10  11  12
+   2   4   6   8  10  12  14  16  18  20  22  24
+   3   6   9  12  15  18  21  24  27  30  33  36
+   4   8  12  16  20  24  28  32  36  40  44  48
+   5  10  15  20  25  30  35  40  45  50  55  60
+   6  12  18  24  30  36  42  48  54  60  66  72
+   7  14  21  28  35  42  49  56  63  70  77  84
+   8  16  24  32  40  48  56  64  72  80  88  96
+   9  18  27  36  45  54  63  72  81  90  99 108
+  10  20  30  40  50  60  70  80  90 100 110 120
+  11  22  33  44  55  66  77  88  99 110 121 132
+  12  24  36  48  60  72  84  96 108 120 132 144
+Example 4:  Write a function that sums up integers from a text file, one int per line.</p>
+<p>Java:</p>
+<pre><code>public static void sumFile ( String name ) {
+    try {
+        int total = 0;
+        BufferedReader in = new BufferedReader ( new FileReader ( name ));
+        for ( String s = in.readLine(); s != null; s = in.readLine() ) {
+            total += Integer.parseInt ( s );
+        }
+        System.out.println ( total );
+        in.close();
+    }
+    catch ( Exception xc ) {
+        xc.printStackTrace();
+    }
+}
+</code></pre><p>Example 5:  Write function to print the odd numbers from 1 to 99.</p>
+<p>C/C++:</p>
+<pre><code>void printOdds() {
+    for (int i = 1; i &lt; 100; i += 2) {
+        printf (&quot;%d\n&quot;, i); // or cout &lt;&lt; i &lt;&lt; endl;
+    }
+}
+</code></pre><p>Java:</p>
+<pre><code>public static void printOdds() {
+    for (int i = 1; i &lt; 100; i += 2) {
+        System.out.println ( i );
+    }
+}
+</code></pre><p>Example 6:  Find the largest int value in an int array.</p>
+<p>Java:</p>
+<pre><code>public static int largest ( int[] input ) {
+int max = Integer.MIN_VALUE;
+for ( int i = 0; i &lt; input.length; i++ ) {
+    if ( input[i] &gt; max ) max = input[i];
+    }
+    return max;
+}
+</code></pre><p>Example 7:  Format an RGB value (three 1-byte numbers) as a 6-digit hexadecimal string.</p>
+<p>Java:</p>
+<pre><code>public String formatRGB ( int r, int g, int b ) {
+    return (toHex(r) + toHex(g) + toHex(b)).toUpperCase();
+}
+
+public String toHex ( int c ) {
+    String s = Integer.toHexString ( c );
+    return ( s.length() == 1 ) ? &quot;0&quot; + s : s;
+}
+</code></pre><p>Or in Java 1.5:</p>
+<pre><code>public String formatRGB ( int r, int g, int b ) {
+    return String.format ( &quot;%02X%02X%02X&quot;, r, g, b );
+}
+</code></pre><p>Example output for (255, 0, 128):  </p>
+<p>You can ask any question you like; doesn&#39;t have to be one of the ones above. They&#39;re just examples.</p>
+<p>Some properties of a good weeder phone-screen coding question are:</p>
+<p>It&#39;s simple. It has to be something that you should be able to solve, trivially, in about 2 minutes or less. Not too tricky. Basic stuff.
+You&#39;ve solved it. You shouldn&#39;t ask a question unless you&#39;ve solved it yourself recently, so you know it&#39;s a reasonable question, and you can evaluate their answer to it. You should consider coding it yourself during the time you&#39;ve given them to do it.
+It has loops or recursion. Recursion is actually preferable. Being able to reason recursively or inductively is important for many areas of computing, including using heirarchical data representations (e.g. XML), distributed computing, searching, and sorting. Many candidates simply can&#39;t think recursively, and this often goes undetected until interview-time. Try to find out at compile-time! Er, phone-screen time, that is.
+It has formatted output. This is a basic skill, useful for debugging, simple report generation, and lots of other things. &quot;printf&quot; is a universal standard; it exists in C, C++, Java, Perl, Ruby, Python, and virtually every other mainstream language, at least as a library call. Like file I/O, it&#39;s a good indicator as to whether the candidate has written &quot;real&quot; code before.
+It has text-file I/O. Candidates who have worked in frameworks for too long often become unable to function as programmers outside that framework. Not being able to do simple file I/O is a common indicator that they&#39;ve grown overly dependent on a particular framework.
+It&#39;s hard to cover all these things and still be a short weeder question. If you think of a question that has all these properties, let me know.</p>
+<h3 id="area-number-two-object-oriented-programming">Area Number Two: Object-Oriented Programming</h3>
+<p>We shouldn&#39;t hire SDEs (arguably excepting college hires) who aren&#39;t at least somewhat proficient with OOP. I&#39;m not claiming that OOP is good or bad; I&#39;m just saying you have to know it, just like you have to know the things you can and can&#39;t do at an airport security checkpoint.</p>
+<p>Two reasons:</p>
+<p>1) OO has been popular/mainstream for more than 20 years. Virtually every programming language supports OOP in some way. You can&#39;t work on a big code base without running into it.</p>
+<p>2) OO concepts are an important building block for creating good service interfaces. They represent a shared understanding and a common vocabulary that are sometimes useful when talking about architecture.</p>
+<p>So you have to ask candidates some OO stuff on the phone.</p>
+<p>a) Terminology</p>
+<p>The candidate should be able to give satisfactory definitions for a random selection of the following terms:</p>
+<p>class, object (and the difference between the two)
+instantiation
+method (as opposed to, say, a C function)
+virtual method, pure virtual method
+class/static method
+static/class initializer
+constructor
+destructor/finalizer
+superclass or base class
+subclass or derived class
+inheritance
+encapsulation
+multiple inheritance (and give an example)
+delegation/forwarding
+composition/aggregation
+abstract class
+interface/protocol (and different from abstract class)
+method overriding
+method overloading (and difference from overriding)
+polymorphism (without resorting to examples)
+is-a versus has-a relationships (with examples)
+method signatures (what&#39;s included in one)
+method visibility (e.g. public/private/other)
+These are just the bare basics of OO. Candidates should know this stuff cold. It&#39;s not even a complete list; it&#39;s just off the top of my head.</p>
+<p>Again, I&#39;m not advocating OOP, or saying anything about it, other than that it&#39;s ubiquitious so you have to know it. You can learn this stuff by reading a single book and writing a little code, so no SDE candidate (except maybe a brand-new college hire) can be excused for not knowing this stuff.</p>
+<p>I draw a distinction between &quot;knows it&quot; and &quot;is smart enough to learn it.&quot; Normally I allow people through for interviews if they&#39;ve got a gap in their knowledge, as long as I think they&#39;re smart enough to make it up on the job.</p>
+<p>But for these five areas, I expect candidates to know them. It&#39;s not just a matter of being smart enough to learn them. There&#39;s a certain amount of common sense involved; I can&#39;t imagine coming to interview at Amazon and not having brushed up on OOP, for example. But these areas are also so fundamental that they serve as real indicators of how the person will do on the job here.</p>
+<p>b) OO Design</p>
+<p>This is where most candidates fail with OO. They can recite the textbook definitions, and then go on to produce certifiably insane class designs for simple problems. For instance:</p>
+<p>They may have Person multiple-inherit from Head, Body, Arm, and Leg.
+They may have Car and Motorcycle inherit from Garage.
+They may produce an elaborate class tree for Animals, and then declare an enum (&quot;Lion = 1, Bear = 2&quot;, etc.) to represent the type of each animal.
+They may have exactly one static instance of every class in their system.
+(All these examples are from real candidates I&#39;ve interviewed in the past 3 weeks.)</p>
+<p>Candidates who&#39;ve only studied the terminology without ever doing any OOP often don&#39;t really get it. When they go to produce classes or code, they don&#39;t understand the difference between a static member and an instance member, and they&#39;ll use them interchangeably.</p>
+<p>Or they won&#39;t understand when to use a subclass versus an attribute or property, and they&#39;ll assert firmly that a car with a bumper sticker is a subclass of car. (Yep, 2 candidates have told me that in the last 2 weeks.)</p>
+<p>Some don&#39;t understand that objects are supposed to know how to take care of themselves. They&#39;ll create a bunch of classes with nothing but data, getters, and setters (i.e., basically C structs), and some Manager classes that contain all the logic (i.e., basically C functions), and voila, they&#39;ve implemented procedural programming perfectly using classes.</p>
+<p>Or they won&#39;t understand the difference between a char*, an object, and an enum. Or they&#39;ll think polymorphism is the same as inheritance. Or they&#39;ll have any number of other fuzzy, weird conceptual errors, and their designs will be fuzzy and weird as well.</p>
+<p>For the OO-design weeder question, have them describe:</p>
+<p>What classes they would define.
+What methods go in each class (including signatures).
+What the class constructors are responsible for.
+What data structures the class will have to maintain.
+Whether any Design Patterns are applicable to this problem.
+Here are some examples:</p>
+<p>Design a deck of cards that can be used for different card game applications.</p>
+<p>Likely classes: a Deck, a Card, a Hand, a Board, and possibly Rank and Suit. Drill down on who&#39;s responsible for creating new Decks, where they get shuffled, how you deal cards, etc. Do you need a different instance for every card in a casino in Vegas?</p>
+<p>Model the Animal kingdom as a class system, for use in a Virtual Zoo program.</p>
+<p>Possible sub-issues: do they know the animal kingdom at all? (I.e. common sense.) What properties and methods do they immediately think are the most important? Do they use abstract classes and/or interfaces to represent shared stuff? How do they handle the multiple-inheritance problem posed by, say, a tomato (fruit or veggie?), a sponge (animal or plant?), or a mule (donkey or horse?)</p>
+<p>Create a class design to represent a filesystem.</p>
+<p>Do they even know what a filesystem is, and what services it provides? Likely classes: Filesystem, Directory, File, Permission. What&#39;s their relationship? How do you differentiate between text and binary files, or do you need to? What about executable files? How do they model a Directory containing many files? Do they use a data structure for it? Which one, and what performance tradeoffs does it have?</p>
+<p>Design an OO representation to model HTML.</p>
+<p>How do they represent tags and content? What about containment relationships? Bonus points if they know that this has already been done a bunch of times, e.g. with DOM. But they still have to describe it.</p>
+<p>The following commonly-asked OO design interview questions are probably too involved to be good phone-screen weeders:</p>
+<p>Design a parking garage.
+Design a bank of elevators in a skyscraper.
+Model the monorail system at Disney World.
+Design a restaurant-reservation system.
+Design a hotel room-reservation system.
+A good OO design question can test coding, design, domain knowledge, OO principles, and so on. A good weeder question should probably just target whether they know when to use subtypes, attributes, and containment.</p>
+<h3 id="area-number-three-scripting-and-regular-expressions">Area Number Three: Scripting and Regular Expressions</h3>
+<p>Many C/C++/Java candidates, even some with 10+ years of experience, would happily spend a week writing a 2,500-line program to do something you could do in 30 seconds with a simple Unix command.</p>
+<p>I now pose the following question to ALL candidates, whether on the phone or in an interview, because it eliminates so many of them:</p>
+<p>Last year my team had to remove all the phone numbers from 50,000 Amazon web page templates, since many of the numbers were no longer in service, and we also wanted to route all customer contacts through a single page.</p>
+<p>Let&#39;s say you&#39;re on my team, and we have to identify the pages having probable U.S. phone numbers in them. To simplify the problem slightly, assume we have 50,000 HTML files in a Unix directory tree, under a directory called &quot;/website&quot;. We have 2 days to get a list of file paths to the editorial staff. You need to give me a list of the .html files in this directory tree that appear to contain phone numbers in the following two formats: (xxx) xxx-xxxx and xxx-xxx-xxxx.</p>
+<p>How would you solve this problem? Keep in mind our team is on a short (2-day) timeline.</p>
+<p>Here are some facts for you to ponder:</p>
+<p>Our Contact Reduction team really did have exactly this problem in 2003. This isn&#39;t a made-up example.</p>
+<p>Someone on our team produced the list within an hour, and the list supported more than just the 2 formats above.</p>
+<p>About 25% to 35% of all software development engineer candidates, independent of experience level, cannot solve this problem, even given the entire interview hour and lots of hints.</p>
+<p>I take as much time as necessary to explain the problem to candidates, to ensure that they understand it and can paraphrase the problem requirements correctly.</p>
+<p>For the record, I&#39;m not being tricky here. Once candidates start down the wrong path (i.e. writing a gigantic C++ program to open every file and parse character by character, using a home-grown state machine), I stop them, tell them this will take too long, and ask if there are any other possibilities. I ask if there are any tools or utilities that might be of use. I give them plenty of hints, and ultimately I tell them the answer.</p>
+<p>Even after I tell them the answer, they often still don&#39;t get it.</p>
+<p>Here&#39;s one of many possible solutions to the problem:</p>
+<p>  grep -l -R --perl-regexp &quot;\b((\d{3})\s<em>|\d{3}-)\d{3}-\d{4}\b&quot; </em> &gt; output.txt
+But I don&#39;t even expect candidates to get that far, really. If they say, after hearing the question, &quot;Um... grep?&quot; then they&#39;re probably OK. I can ask them for the approximate syntax for the regular expression to use, and as long as they have a reasonable clue, I&#39;m fine with it. Heck, if they can tell me where they&#39;d look to find the syntax, I&#39;m fine with it.</p>
+<p>They can also use find, or write a Perl script (or awk or bash or etc.). Anything that shows they have even the tiniest inkling of why Unix is Unix.</p>
+<p>They can even write a Java or C++ program, provided they can actually write an entire working program in, say, half an hour or less, on the board, or at least convince me that they will get it working quickly. But I&#39;ve only ever had that happen once; an insanely good C++ programmer burned through a 175-line C++ program on the whiteboard that more or less solved it. We made him an offer. But usually they throw in the towel when they find out they have to remember how to do file I/O, or traverse a directory tree.</p>
+<p>For what it&#39;s worth, this failure mode is unique to Java and C/C++ programmers. Perl programmers laugh and solve it in 30 seconds or less. I have some easy questions that make Perl programmers cry, but this isn&#39;t one of them.</p>
+<p>In my experience, a programmer who only knows one language (where C and C++ count as one language for this exercise) is usually completely lost in one of these Five Essential Areas.</p>
+<p>You don&#39;t necessarily have to ask the HTML phone-number question. Another one I used to ask, one that worked equally well, was:</p>
+<p>Let&#39;s say you&#39;re on my team, and I&#39;ve decided I&#39;m a real stickler for code formatting. But I&#39;ve got peculiar tastes, and one day I decide I want to have all parentheses stand out very clearly in your code.</p>
+<p>So let&#39;s say you&#39;ve got a set of source files in C, C++, or Java. Your choice. And I want you to modify them so that in each source file, every open- and close-paren has exactly one space character before and after it. If there is any other whitespace around the paren, it&#39;s collapsed into a single space character.</p>
+<p>For instance, this code:</p>
+<p>foo (bar ( new Point(x, graph.getY()) ));</p>
+<p>Would be modified to look like this:</p>
+<p>foo ( bar ( new Point ( x, graph.getY ( ) ) ) ) ;</p>
+<p>I tell you (as your manager) that I don&#39;t care how you solve this problem. You can take the code down to Kinko&#39;s Copies and manually cut and paste the characters with scissors if you like.</p>
+<p>How will you solve this problem?</p>
+<p>Same thing, more or less. You&#39;d do it with a Unix command like sed (using a regular expression), or do it in your editor using a regex, or write a quick Ruby script, whatever. I&#39;d even accept having them use a source-code formatter, provided they can tell me in detail how to use it, during the interview (to a level of detail that convinces me they&#39;ve used it before.)</p>
+<p>There are all sorts of variations on this problem. Generally you want to come up with a real-life scenario that involves searching text files for patterns, and see if the candidate wants to solve it by writing a giant chunk of C++ or Java code.</p>
+<h3 id="area-number-four-data-structures">Area Number Four: Data Structures</h3>
+<p>SDE candidates need to demonstrate a basic understanding of the most common data structures, and of the fundamentals of &quot;big-O&quot; algorithmic complexity analysis.</p>
+<p>Here&#39;s what they need to know about big-O. They need to know that algorithms usually fall into the following performance classes: constant-time, logarithmic, linear, polynomial, exponential, and factorial.</p>
+<p>For the standard data structures in java.util, STL, or those built into a higher-level language, they need to know the big-O complexity for the operations on those data structures. Example: they should know that finding an element in a hashtable is usually constant-time, that finding an element in a balanced binary tree is order log(n), that finding an element in a linked list is order N, and that finding an element in a sorted array is order log(n). Similarly for insert/update/delete operations.</p>
+<p>And they should be able to explain why each operation falls into a particular complexity class. For instance: &quot;Computing a hash value doesn&#39;t depend on the number of items in the hashtable.&quot; Or: &quot;you have to search the entire linked list, even if it&#39;s sorted, to find an arbitrary element in it.&quot; No math needed, no proofs, just explanations.</p>
+<p>The (concrete) data structures they absolutely must understand are these:</p>
+<p>1) arrays - I&#39;m talking about C-language and Java-language arrays: fixed-sized, indexed, contiguous structures whose elements are all of the same type, and whose elements can be accessed in constant time given their indices.</p>
+<p>2) vectors - also known as &quot;growable arrays&quot; or ArrayLists. Need to know that they&#39;re objects that are backed by a fixed-size array, and that they resize themselves as necessary.</p>
+<p>3) linked lists - lists made of nodes that contain a data item and a pointer/reference to the next (and possibly previous) node.</p>
+<p>4) hashtables - amortized constant-time access data structures that map keys to values, and are backed by a real array in memory, with some form of collision handling for values that hash to the same location.</p>
+<p>5) trees - data structures that consist of nodes with optional data elements and one or more child pointers/references, and possibly parent pointers, representing a heirarchical or ordered set of data elements.</p>
+<p>6) graphs - data structures that represent arbitrary relationships between members of any data set, represented as networks of nodes and edges.</p>
+<p>There are, to be sure, many other important data structures one should know about, but not knowing about the six listed above is inexcusable, and grounds for rejection in a phone screen.</p>
+<p>Candidates should be able to describe, for any of the data structures above:</p>
+<p>what you use them for (real-life examples)
+why you prefer them for those examples
+the operations they typically provide (e.g. insert, delete, find)
+the big-O performance of those operations (e.g. logarithmic, exponential)
+how you traverse them to visit all their elements, and what order they&#39;re visited in
+at least one typical implementation for the data structure
+Candidates should know the difference between an abstract data type such as a Stack, Map, List or Set, and a concrete data structure such as a singly-linked list or a hash table. For a given abstract data type (e.g. a Queue), they should be able to suggest at least two possible concrete implementations, and explain the performance trade-offs between the two implementations.</p>
+<p>Example weeder questions:</p>
+<p>1) What are some really common data structures, e.g. in java.util?</p>
+<p>2) When would you use a linked list vs. a vector?</p>
+<p>3) Can you implement a Map with a tree? What about with a list?</p>
+<p>4) How do you print out the nodes of a tree in level-order (i.e. first level, then 2nd level, then 3rd level, etc.)</p>
+<p>5) What&#39;s the worst-case insertion performance of a hashtable? Of a binary tree?</p>
+<p>6) What are some options for implementing a priority queue?</p>
+<p>And so on. Just a few quick questions should cover this area, provided you don&#39;t focus exclusively on linear ordered sequences (lists, arrays, vectors and the like).</p>
+<h3 id="area-number-five-bits-and-bytes">Area Number Five: Bits and Bytes</h3>
+<p>This area is fairly contentious, at least inasmuch as people who don&#39;t know this area claim you don&#39;t need to know it.</p>
+<p>(Hint: that&#39;s true for everything. Nobody likes to admit they don&#39;t know something you need to know. I&#39;ll start: I should know more about math; it&#39;s inexcusable. I&#39;m doing all kinds of stuff the long, slow, dumb way because of my rusty math skills. But at least I admit it, and I&#39;ve been studying my math books semi-regularly in an attempt to repair my skills.)</p>
+<p>Candidates do need to know about bits and bytes, at least at the level that I&#39;m outlining here. Otherwise they&#39;re prone to having an integer-overflow error in their code that brings the website down and costs us millions. Or spending a week trying to decode a serialized object they&#39;re debugging. Or whatever. Computers don&#39;t have ten fingers; they have one. So people need to know this stuff.</p>
+<p>Candidates should know what bits and bytes are. They should be able to count in binary; e.g. they should be able to tell you what 2^5 or 2^10 is, in decimal. They shouldn&#39;t stare blankly at you when you ask with 2^16 is. It&#39;s a special number. They should know it.</p>
+<p>They should know at least the logical operations AND, OR, NOT, and XOR, and how to express them in their favorite/strongest programming language.</p>
+<p>They should understand the difference between a bitwise-AND and a logical-AND; similarly for the other operations.</p>
+<p>Candidates should know the probable sizes of the primitive data types for a standard 32-bit (e.g. Intel) architecture.</p>
+<p>If they&#39;re a Java programmer, they should know exactly what the primitive types are (byte, short, int, long, float, double, char, boolean) and, except for boolean, exactly how much space is allocated for them per the Java Language specification.</p>
+<p>Everyone should know the difference between signed and unsigned types, what it does to the range of representable values for that type, and whether their language supports signed vs. unsigned types.</p>
+<p>Candidates should know the bitwise and logical operators for their language, and should be able to use them for simple things like setting or testing a specific bit, or set of bits.</p>
+<p>Candidates should know about the bit-shift operators in their language, and should know why you would want to use them.</p>
+<p>A good weeder question for this area is:</p>
+<p>Tell me how to test whether the high-order bit is set in a byte.</p>
+<p>Another, more involved one is:</p>
+<p>Write a function to count all the bits in an int value; e.g. the function with the signature int countBits(int x)</p>
+<p>Another good one is:</p>
+<p>Describe a function that takes an int value, and returns true if the bit pattern of that int value is the same if you reverse it (i.e. it&#39;s a palindrome); i.e. boolean isPalindrome(int x)</p>
+<p>They don&#39;t have to code the last two, just convince you they&#39;d take the right approach. Although if you have them code it correctly, it can count for your Coding weeder question too.</p>
+<p>C/C++ programmers should know about the sizeof operator and how (and why/when) to use it. Actually, come to think of it, everyone should know this.</p>
+<p>All programmers should be able to count in hexadecimal, and should be able to convert between the binary, octal, and hex representations of a number.</p>
+<p>Special Fast-Track Version</p>
+<p>That&#39;s it for the Five Essential Phone Screen Questions. Hope ya liked it.</p>
+<p>As a special reward for reading this far, here&#39;s a special Bonus Feature: a set of all-too-common answers that are almost always indicators of certain failure during our interviews. Even if I&#39;m not on the loop!</p>
+<h4 id="bad-sign-1-">Bad Sign #1:</h4>
+<p>Me:   So! What languages have you used, starting with your strongest? 
+Them: (briskly) C, C++. 
+Me:   (long, pregnant pause)
+Them: (waiting patiently for me to continue)
+Me:   Any others?
+Them: Nope. C, C++.</p>
+<p>Translation: (in thick Southern drawl)   &quot;We got both kinds of music here: country and western.&quot;</p>
+<p>Probable failure modes for this candidate:</p>
+<p>  Will fail the HTML-phone-number question and the OO design question (but will get the OO terminology definitions mostly right.)</p>
+<h4 id="bad-sign-1a-">Bad Sign #1a:</h4>
+<p>Me:   So! What languages are you most familiar/proficient with? 
+Them: (worried) I&#39;ve done mostly Java lately.
+Me:   (long, pregnant pause)
+Them: Yeah, um, Java. 
+Me:   Any others?
+Them: Um, I did C in school a long time ago, but... pretty much mostly Java now.</p>
+<p>Translation:   &quot;Country and Western were both too hardcore for me. I got beat up in a bar.&quot;</p>
+<p>Probable failure modes for this candidate:   Will fail the bits and bytes questions, the HTML-phone-number question, and most of the data structures questions.</p>
+<h4 id="bad-sign-2-">Bad Sign #2:</h4>
+<p>Me:   So! What data structures do we have available to us, as programmers? 
+Them: Arrays, queues, vectors, stacks, lists, um, linked lists...
+Me:   OK, any others?
+Them: Um, doubly-linked lists, and, uh, array lists.
+Me:   Have you ever used a tree? 
+Them: Oh! (laughs) Yeah, um, I forgot about those.</p>
+<p>Translation:  &quot;My family tree doesn&#39;t branch.&quot;</p>
+<p>Probable failure modes for this candidate:   Very likely to fail data structures questions. Will fail any recursive problem, even a simple one like printing the elements of a linked list recursively. Will fail the HTML-phone-number question, since they obviously haven&#39;t ever used Perl if &quot;hash&quot; didn&#39;t leap to mind.</p>
+<h4 id="bad-sign-3-">Bad Sign #3:</h4>
+<p>Me:   So! What the the primitive types in Java (or C++)?
+Them: Ummmm, there&#39;s, um, int. And, uh, double. 
+Me:   Any others?
+Them: Shoot, I&#39;m drawing a blank right now. Um, String?</p>
+<p>Translation:  &quot;C made my head hurt.  Java is like sweet, sweet aspirin.&quot;</p>
+<p>Probable failure modes for this candidate:   Will fail bits and bytes questions, and probably just about everything else as well.</p>
+<h4 id="bad-sign-4-">Bad Sign #4:</h4>
+<p>Me:   So! What text-editor do you use?
+Them: Visual Studio. 
+Me:   OK. What about on Unix?
+Them: On Unix I use vi. 
+Me:   Er, yeah, vi is cool... ever used VIM?
+Them: No, just vi. Always worked just fine for me.</p>
+<p>Translation:  &quot;Sometimes I type with my elbows when my hands are tired. It&#39;s just as fast.&quot;</p>
+<p>Probable failure modes for this candidate: Will likely fail the HTML-phone-number question. Might pass the interviews, but will need to be scheduled in geologic eras.</p>
+<h4 id="bad-sign-5-">Bad Sign #5:</h4>
+<p>Me:   So! What did you study in your Operating Systems class?
+Them: Oh, that was a long time ago. I can hardly remember. Hehe. 
+Me:   How long ago was it?
+Them: 2 years. </p>
+<p>Translation:  &quot;I want to use my MBA skills in a dynamic management role. When&#39;s lunch?&quot;</p>
+<p>Probable failure modes for this candidate:   Will probably fail the coding question. Probably any OS questions, too.</p>
+<p>All my Insta-Bad Signs above are cliches, in that I&#39;ve heard these answers from at least 10 to 15 candidates (per question!), none of whom ever got an offer from us. I tend to ask questions like these as a matter of course now.</p>
+<h2 id="summary">Summary</h2>
+<p>This stuff is the ABC&#39;s for programmers. Actually it&#39;s only going up through maybe J or K; it&#39;s not even halfway through the alphabet. But most programmers out there in the Big Wide World will fail utterly in at least one of these areas.</p>
+<p>Please cover all five areas if you&#39;re a phone screener. If you&#39;re the second screener, ask if you don&#39;t see evidence of them in the first screener&#39;s notes. (And then follow up and remind the first screener they should have asked these things.)</p>
+<p>(Published Sep 28th 2004)</p>
+<h3 id="reference-">Reference:</h3>
 <ul>
-<li><a href="https://sites.google.com/site/steveyegge2/five-essential-phone-screen-questions">不管前端后端，最基本的电面知识</a></li>
+<li><a href="https://sites.google.com/site/steveyegge2/five-essential-phone-screen-questions">https://sites.google.com/site/steveyegge2/five-essential-phone-screen-questions</a></li>
 </ul>
