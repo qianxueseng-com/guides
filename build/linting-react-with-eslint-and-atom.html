@@ -1,0 +1,60 @@
+<h1 id="linting-react-with-eslint-and-atom">linting React with ESLint and Atom</h1>
+<h2 id="-linting-">为什么要linting?因为可以减少错误。</h2>
+<h3 id="-">一段质量不高的代码</h3>
+<pre><code>AppView = {
+
+};
+
+module.exports = AppView;
+</code></pre><h3 id="-linting">没用linting</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012481/3fe866f0-acab-11e5-9ced-90eb6f722261.png" alt="linting_js_before"></p>
+<h2 id="-atom-eslint">如何一步一步的在Atom上配置好ESLint</h2>
+<h3 id="1-atom-atom-">1. 在Atom编辑器里面，先装两个基本的Atom插件:</h3>
+<ul>
+<li><a href="https://atom.io/packages/linter">https://atom.io/packages/linter</a></li>
+<li><a href="https://github.com/AtomLinter/linter-eslint">https://github.com/AtomLinter/linter-eslint</a></li>
+</ul>
+<h3 id="2-npm-eslint">2.用npm来安装eslint</h3>
+<pre><code>npm install eslint --save-dev
+</code></pre><h3 id="3-eslint-">3.在根目录下创建eslint的配置文件</h3>
+<pre><code>./node_modules/.bin/eslint --init
+# 选择Use a popular style guide
+# 再选择Google
+# 再选择JavaScript
+# 现在有一个新的文件.eslintrc.js已经创建完毕了
+</code></pre><h3 id="-linting-">用了linting，再回头看我们开始的那段质量不高的代码：</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012480/3fd509f2-acab-11e5-82c4-d048a5af701c.png" alt="linting_js_after"></p>
+<h2 id="-react-jsx">以下部分仅为支持React/JSX</h2>
+<h3 id="-react-">一段质量不高的React代码</h3>
+<pre><code>var React = require(&#39;react&#39;);
+
+var AppView = React.createClass({
+  render: function() {
+    return (&lt;div&gt;test div&lt;/div&gt;)
+  },
+  getInitialState: function() {
+    return {};
+  }
+});
+
+module.exports = AppView;
+</code></pre><h3 id="-linting-react-">不用linting时的质量不高的React代码</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012482/3ff582ae-acab-11e5-8fb0-8a4bfd611c7b.png" alt="linting_jsx_after"></p>
+<h3 id="4-react-jsx-eslint-react-https-github-com-yannickcr-eslint-plugin-react-">4. 为了支持React/JSX，还需要一个<a href="https://github.com/yannickcr/eslint-plugin-react">ESLint的React插件</a>:</h3>
+<pre><code>npm install eslint-plugin-react --save-dev
+</code></pre><h3 id="5-eslint-react-eslintrc-js-">5. 配置ESLint的React插件，.eslintrc.js的全文如下：</h3>
+<pre><code>module.exports = {
+  extends: &#39;google&#39;,
+  plugins: [
+    &#39;react&#39;
+  ],
+  ecmaFeatures: {
+    jsx: true
+  },
+  rules: {
+    &#39;react/display-name&#39;: 1,
+    &#39;react/sort-comp&#39;: 1
+  }
+};
+</code></pre><h3 id="-linting-react-">用了linting，再回头看的那段质量不高的React代码：</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012497/d3f10b12-acac-11e5-8f24-74436accc7f0.png" alt="linting_jsx_after_react_support"></p>
