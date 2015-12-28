@@ -6,9 +6,14 @@
   "source": "wiki",
   "destination": "build",
   "plugins": {
+    "metalsmith-layouts": {
+      "engine": "handlebars",
+      "default": "default.html"
+    },
     "metalsmith-markdown": {},
     "metalsmith-ignore": [
       ".git"
-    ]
+    ],
+    "metalsmith-prism": {}
   }
 }
