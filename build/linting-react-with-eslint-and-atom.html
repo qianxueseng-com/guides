@@ -1,83 +1,124 @@
+<!doctype html>
 <html lang="zh">
   <head>
+    <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-
-    <title>Qianxueseng front end guides</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="Qianxueseng front end guides">
     <meta name="author" content="Qianxueseng">
 
-    <link href="//static.qianxueseng.com/prism/prism.css?v=20151227" rel="stylesheet">
+    <title>前学僧前端笔记 Qianxueseng front end guides</title>
+
+    <link href="//static.qianxueseng.com/node_modules/highlight.js/styles/darkula.css?v=20151227" rel="stylesheet">
+    <link href="//static.qianxueseng.com/node_modules/bootstrap/dist/css/bootstrap.min.css?v=20151227" rel="stylesheet">
+
+    <style>
+      #qxs-remove-border-radius {
+        border-radius: 0;
+      }
+    </style>
+
   </head>
-
   <body>
-    # linting React with ESLint and Atom
+    <div class="navbar-collapse collapse inverse" id="navbar-header">
+      <div class="container-fluid">
+        <div class="about">
+          <h4>关于笔记</h4>
+          <p class="text-muted">像读者文摘一样，不一定要原创，但务必注明出处。如果有版权问题，请和我们联系。</p>
+        </div>
+        <div class="social">
+          <h4>文件列表</h4>
+          <ul class="list-unstyled">
+            <li><a href="/guides/">所有文件</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-static-top navbar-dark bg-inverse" id="qxs-remove-border-radius">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
+          &#9776;
+        </button>
+        <a href="#" class="navbar-brand">前学僧</a>
+      </div>
+    </div>
 
-## 为什么要linting?因为可以减少错误。
-### 一段质量不高的代码
-<code>AppView = {
+    <div class="container">
+      <h1 id="linting-react-with-eslint-and-atom">linting React with ESLint and Atom</h1>
+<h2 id="-linting-">为什么要linting?因为可以减少错误。</h2>
+<h3 id="-">一段质量不高的代码</h3>
+<pre><code class="hljs"><span class="hljs-variable">AppView =</span> {
 
 };
 
-module.exports = AppView;</code>
-### 没用linting
-<img src="https://cloud.githubusercontent.com/assets/806173/12012481/3fe866f0-acab-11e5-9ced-90eb6f722261.png" alt="linting_js_before">
+module.<span class="hljs-variable">exports =</span> AppView;</code></pre>
 
-## 如何一步一步的在Atom上配置好ESLint
-### 1. 在Atom编辑器里面，先装两个基本的Atom插件:
-- <a href="https://atom.io/packages/linter">https://atom.io/packages/linter</a>
-- <a href="https://github.com/AtomLinter/linter-eslint">https://github.com/AtomLinter/linter-eslint</a>
+<h3 id="-linting">没用linting</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012481/3fe866f0-acab-11e5-9ced-90eb6f722261.png" alt="linting_js_before"></p>
+<h2 id="-atom-eslint">如何一步一步的在Atom上配置好ESLint</h2>
+<h3 id="1-atom-atom-">1. 在Atom编辑器里面，先装两个基本的Atom插件:</h3>
+<ul>
+<li><a href="https://atom.io/packages/linter">https://atom.io/packages/linter</a></li>
+<li><a href="https://github.com/AtomLinter/linter-eslint">https://github.com/AtomLinter/linter-eslint</a></li>
+</ul>
+<h3 id="2-npm-eslint">2.用npm来安装eslint</h3>
+<pre><code class="hljs">npm install eslint --<span class="hljs-built_in">save</span>-<span class="hljs-built_in">dev</span></code></pre>
 
-### 2.用npm来安装eslint
-<code>npm install eslint --save-dev</code>
+<h3 id="3-eslint-">3.在根目录下创建eslint的配置文件</h3>
+<pre><code class="hljs">./node_modules/.bin/eslint --init
+<span class="hljs-preprocessor"># 选择Use a popular style guide</span>
+<span class="hljs-preprocessor"># 再选择Google</span>
+<span class="hljs-preprocessor"># 再选择JavaScript</span>
+<span class="hljs-preprocessor"># 现在有一个新的文件.eslintrc.js已经创建完毕了</span></code></pre>
 
-### 3.在根目录下创建eslint的配置文件
-<code>./node_modules/.bin/eslint --init
-# 选择Use a popular style guide
-# 再选择Google
-# 再选择JavaScript
-# 现在有一个新的文件.eslintrc.js已经创建完毕了</code>
+<h3 id="-linting-">用了linting，再回头看我们开始的那段质量不高的代码：</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012480/3fd509f2-acab-11e5-82c4-d048a5af701c.png" alt="linting_js_after"></p>
+<h2 id="-react-jsx">以下部分仅为支持React/JSX</h2>
+<h3 id="-react-">一段质量不高的React代码</h3>
+<pre><code class="hljs"><span class="hljs-keyword">var</span> React = <span class="hljs-keyword">require</span>(<span class="hljs-string">'react'</span>);
 
-### 用了linting，再回头看我们开始的那段质量不高的代码：
-<img src="https://cloud.githubusercontent.com/assets/806173/12012480/3fd509f2-acab-11e5-82c4-d048a5af701c.png" alt="linting_js_after">
-
-## 以下部分仅为支持React/JSX
-### 一段质量不高的React代码
-<code>var React = require(&#39;react&#39;);
-
-var AppView = React.createClass({
-  render: function() {
-    return (&lt;div&gt;test div&lt;/div&gt;)
+<span class="hljs-keyword">var</span> AppView = React.createClass({
+  render: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> (&lt;div&gt;test div&lt;/div&gt;)
   },
-  getInitialState: function() {
-    return {};
+  getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> {};
   }
 });
 
-module.exports = AppView;</code>
+module.exports = AppView;</code></pre>
 
-### 不用linting时的质量不高的React代码
-<img src="https://cloud.githubusercontent.com/assets/806173/12012482/3ff582ae-acab-11e5-8fb0-8a4bfd611c7b.png" alt="linting_jsx_after">
+<h3 id="-linting-react-">不用linting时的质量不高的React代码</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012482/3ff582ae-acab-11e5-8fb0-8a4bfd611c7b.png" alt="linting_jsx_after"></p>
+<h3 id="4-react-jsx-eslint-react-https-github-com-yannickcr-eslint-plugin-react-">4. 为了支持React/JSX，还需要一个<a href="https://github.com/yannickcr/eslint-plugin-react">ESLint的React插件</a>:</h3>
+<pre><code class="hljs">npm <span class="hljs-operator"><span class="hljs-keyword">install</span> eslint-<span class="hljs-keyword">plugin</span>-react <span class="hljs-comment">--save-dev</span></span></code></pre>
 
-### 4. 为了支持React/JSX，还需要一个<a href="https://github.com/yannickcr/eslint-plugin-react">ESLint的React插件</a>:
-<code>npm install eslint-plugin-react --save-dev</code>
-
-### 5. 配置ESLint的React插件，.eslintrc.js的全文如下：
-<code>module.exports = {
-  extends: &#39;google&#39;,
+<h3 id="5-eslint-react-eslintrc-js-">5. 配置ESLint的React插件，.eslintrc.js的全文如下：</h3>
+<pre><code class="hljs"><span class="hljs-module"><span class="hljs-keyword">module</span>.exports = </span>{
+  extends: <span class="hljs-string">'google'</span>,
   plugins: [
-    &#39;react&#39;
+    <span class="hljs-string">'react'</span>
   ],
   ecmaFeatures: {
-    jsx: true
+    jsx: <span class="hljs-literal">true</span>
   },
   rules: {
-    &#39;react/display-name&#39;: 1,
-    &#39;react/sort-comp&#39;: 1
+    <span class="hljs-string">'react/display-name'</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">'react/sort-comp'</span>: <span class="hljs-number">1</span>
   }
-};</code>
+};</code></pre>
 
-### 用了linting，再回头看的那段质量不高的React代码：
-<img src="https://cloud.githubusercontent.com/assets/806173/12012497/d3f10b12-acac-11e5-8f24-74436accc7f0.png" alt="linting_jsx_after_react_support">
-    <script src="//static.qianxueseng.com/prism/prism.js?v=20151227"></script>
+<h3 id="-linting-react-">用了linting，再回头看的那段质量不高的React代码：</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012497/d3f10b12-acac-11e5-8f24-74436accc7f0.png" alt="linting_jsx_after_react_support"></p>
+
+      <footer class="footer">
+        <p>&copy; <a href="//qianxueseng.com/guides/">前端笔记</a> 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="//static.qianxueseng.com/node_modules/highlight.js/lib/highlight.js?v=20151227"></script>
+    <script src="//static.qianxueseng.com/node_modules/jquery/dist/jquery.min.js?v=20151227"></script>
+    <script src="//static.qianxueseng.com/node_modules/bootstrap/dist/js/bootstrap.min.js?v=20151227"></script>
   </body>
 </html>

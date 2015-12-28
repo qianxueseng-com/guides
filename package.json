@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "metalsmith": "metalsmith",
     "pull-wiki": "cd wiki && git pull && cd ..",
     "build-wiki": "metalsmith && git add . && git commit -m 'update'",
     "push-gh-pages": "git subtree push --prefix build origin gh-pages",
@@ -25,6 +26,6 @@
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.4.2",
     "metalsmith-markdown": "^0.2.1",
-    "metalsmith-prism": "^2.1.1"
+    "metalsmith-metallic": "^0.3.1"
   }
 }
