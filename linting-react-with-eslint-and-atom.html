@@ -49,8 +49,6 @@
 
 module.<span class="hljs-variable">exports =</span> AppView;</code></pre>
 
-<h3 id="-linting">没用linting</h3>
-<p><img src="https://cloud.githubusercontent.com/assets/806173/12012481/3fe866f0-acab-11e5-9ced-90eb6f722261.png" alt="linting_js_before"></p>
 <h2 id="-atom-eslint">如何一步一步的在Atom上配置好ESLint</h2>
 <h3 id="1-atom-atom-">1. 在Atom编辑器里面，先装两个基本的Atom插件:</h3>
 <ul>
@@ -67,7 +65,9 @@ module.<span class="hljs-variable">exports =</span> AppView;</code></pre>
 <span class="hljs-preprocessor"># 再选择JavaScript</span>
 <span class="hljs-preprocessor"># 现在有一个新的文件.eslintrc.js已经创建完毕了</span></code></pre>
 
-<h3 id="-linting-">用了linting，再回头看我们开始的那段质量不高的代码：</h3>
+<h3 id="-linting-atom-">没用linting之前Atom是这样显示的：</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012481/3fe866f0-acab-11e5-9ced-90eb6f722261.png" alt="linting_js_before"></p>
+<h3 id="-linting-atom-">用了linting之后Atom是这样显示的：</h3>
 <p><img src="https://cloud.githubusercontent.com/assets/806173/12012480/3fd509f2-acab-11e5-82c4-d048a5af701c.png" alt="linting_js_after"></p>
 <h2 id="-react-jsx">以下部分仅为支持React/JSX</h2>
 <h3 id="-react-">一段质量不高的React代码</h3>
@@ -84,12 +84,15 @@ module.<span class="hljs-variable">exports =</span> AppView;</code></pre>
 
 module.exports = AppView;</code></pre>
 
-<h3 id="-linting-react-">不用linting时的质量不高的React代码</h3>
-<p><img src="https://cloud.githubusercontent.com/assets/806173/12012482/3ff582ae-acab-11e5-8fb0-8a4bfd611c7b.png" alt="linting_jsx_after"></p>
-<h3 id="4-react-jsx-eslint-react-https-github-com-yannickcr-eslint-plugin-react-">4. 为了支持React/JSX，还需要一个<a href="https://github.com/yannickcr/eslint-plugin-react">ESLint的React插件</a>:</h3>
+
+<h3 id="4-react-jsx-atom-react-">4. 为了支持React/JSX，首先需要一个Atom的React插件</h3>
+<ul>
+<li><a href="https://atom.io/packages/react">https://atom.io/packages/react</a></li>
+</ul>
+<h3 id="5-react-jsx-eslint-react-https-github-com-yannickcr-eslint-plugin-react-">5. 为了支持React/JSX，其次还需要一个<a href="https://github.com/yannickcr/eslint-plugin-react">ESLint的React插件</a>:</h3>
 <pre><code class="hljs">npm <span class="hljs-operator"><span class="hljs-keyword">install</span> eslint-<span class="hljs-keyword">plugin</span>-react <span class="hljs-comment">--save-dev</span></span></code></pre>
 
-<h3 id="5-eslint-react-eslintrc-js-">5. 配置ESLint的React插件，.eslintrc.js的全文如下：</h3>
+<h3 id="6-eslint-react-eslintrc-js-">6. 配置ESLint的React插件，.eslintrc.js的全文如下：</h3>
 <pre><code class="hljs"><span class="hljs-module"><span class="hljs-keyword">module</span>.exports = </span>{
   extends: <span class="hljs-string">'google'</span>,
   plugins: [
@@ -104,8 +107,14 @@ module.exports = AppView;</code></pre>
   }
 };</code></pre>
 
-<h3 id="-linting-react-">用了linting，再回头看的那段质量不高的React代码：</h3>
+<h3 id="-linting-atom-">没用linting之前Atom是这样显示的：</h3>
+<p><img src="https://cloud.githubusercontent.com/assets/806173/12012482/3ff582ae-acab-11e5-8fb0-8a4bfd611c7b.png" alt="linting_jsx_after"></p>
+<h3 id="-linting-atom-">用了linting之后Atom是这样显示的：</h3>
 <p><img src="https://cloud.githubusercontent.com/assets/806173/12012497/d3f10b12-acac-11e5-8f24-74436accc7f0.png" alt="linting_jsx_after_react_support"></p>
+<h3 id="-repo-">配置好的Repo在这里：</h3>
+<ul>
+<li><a href="https://github.com/qianxueseng-com/linting-with-eslint-and-atom">https://github.com/qianxueseng-com/linting-with-eslint-and-atom</a></li>
+</ul>
 <h3 id="-">参考文献：</h3>
 <ul>
 <li><a href="http://devnull.guru/get-started-with-eslint/">http://devnull.guru/get-started-with-eslint/</a></li>
