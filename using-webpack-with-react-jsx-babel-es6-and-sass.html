@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Qianxueseng front end guides">
+    <meta name="author" content="Qianxueseng">
+
+    <title>前学僧前端笔记 Qianxueseng front end guides</title>
+
+    <link href="//static.qianxueseng.com/node_modules/highlight.js/styles/default.css?v=20151227" rel="stylesheet">
+    <link href="//static.qianxueseng.com/node_modules/bootstrap/dist/css/bootstrap.min.css?v=20151227" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css?v=20151227">
+  </head>
+  <body>
+    <div class="navbar-collapse collapse inverse" id="navbar-header">
+      <div class="container-fluid">
+        <div class="about">
+          <h4>关于笔记</h4>
+          <p class="text-muted">像读者文摘一样，不一定要原创，但务必注明出处。如果有版权问题，请和我们联系。</p>
+        </div>
+        <div class="social">
+          <h4>文件列表</h4>
+          <ul class="list-unstyled">
+            <li><a href="/guides/">所有文件</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-static-top navbar-dark bg-inverse" id="qxs-remove-border-radius">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
+          &#9776;
+        </button>
+        <a href="#" class="navbar-brand">前学僧</a>
+      </div>
+    </div>
+
+    <div class="container markdown-body">
+      <h1 id="using-webpack-with-react-jsx-babel-es6-and-sass">Using Webpack with React/JSX, Babel/ES6 and SASS</h1>
+<h2 id="repo-is-here-https-github-com-qianxueseng-com-react-jsx-es6-babel6-sass-images-boilerplate-">Repo is <a href="https://github.com/qianxueseng-com/react-jsx-es6-babel6-sass-images-boilerplate">here</a></h2>
+<h3 id="webpack-config-js">webpack.config.js</h3>
+<pre><code class="hljs"><span class="hljs-module"><span class="hljs-keyword">module</span>.exports = </span>{
+  <span class="hljs-comment">// read this js file to start</span>
+  entry: <span class="hljs-string">'./src/js/index.js'</span>,
+
+  <span class="hljs-comment">// generate the output js file with the following options</span>
+  output: {
+    <span class="hljs-comment">// this is used to generate URLs</span>
+    publicPath: <span class="hljs-string">'http://localhost:8080/'</span>,
+    filename: <span class="hljs-string">'build/bundle.js'</span>
+  },
+
+  <span class="hljs-comment">// generate source map</span>
+  devtool: <span class="hljs-string">'source-map'</span>,
+
+  <span class="hljs-module"><span class="hljs-keyword">module</span>: </span>{
+    <span class="hljs-comment">// a list of loaders: https://webpack.github.io/docs/list-of-loaders.html</span>
+    loaders: [
+
+      <span class="hljs-comment">// transforms JSX and ES6+ into normal js files</span>
+      <span class="hljs-comment">// use babel-loader for all *.js and *.jsx files</span>
+      <span class="hljs-comment">// using three presets: react, es2015, stage-0</span>
+      <span class="hljs-comment">// https://babeljs.io/docs/plugins/</span>
+      {
+        test: <span class="hljs-regexp">/\.jsx?$/</span>,
+        exclude: <span class="hljs-regexp">/node_modules/</span>,
+        loaders: [
+          <span class="hljs-string">'babel?presets[]=stage-0,presets[]=react,presets[]=es2015'</span>
+        ]
+      },
+
+      <span class="hljs-comment">// load CSS</span>
+      <span class="hljs-comment">// the order is important here</span>
+      <span class="hljs-comment">// style loader takes CSS and actually inserts it into the page</span>
+      <span class="hljs-comment">//     so that the styles are active on the page</span>
+      <span class="hljs-comment">// css loader takes a CSS file and returns the CSS with</span>
+      <span class="hljs-comment">//     imports and url(...) resolved via webpack's require functionality</span>
+      <span class="hljs-comment">//     it doesn't actually do anything with the returned CSS</span>
+      <span class="hljs-comment">// sass loader converst sass to css files</span>
+      {
+        test: <span class="hljs-regexp">/\.scss$/</span>,
+        include: <span class="hljs-regexp">/src/</span>,
+        loaders: [
+          <span class="hljs-string">'style'</span>,
+          <span class="hljs-string">'css'</span>,
+          <span class="hljs-string">'sass'</span>
+        ]
+      },
+
+      <span class="hljs-comment">// load images</span>
+      <span class="hljs-comment">// url loader works like the file loader, but can return a Data Url</span>
+      <span class="hljs-comment">//     if the file is smaller than a limit.</span>
+      <span class="hljs-comment">// img loader minifis PNG, JPEG, GIF and SVG images with imagemin</span>
+      {
+        test: <span class="hljs-regexp">/\.(jpe?g|png|gif|svg)$/i</span>,
+        loaders: [
+          <span class="hljs-string">'url'</span>,
+          <span class="hljs-string">'img'</span>
+        ]
+      }
+    ]
+  }
+};</code></pre>
+
+<h3 id="relevant-part-in-package-json">Relevant part in package.json</h3>
+<pre><code class="hljs">{
+  "<span class="hljs-attribute">scripts</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">test</span>": <span class="hljs-value"><span class="hljs-string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span>,
+    "<span class="hljs-attribute">webpack-server</span>": <span class="hljs-value"><span class="hljs-string">"webpack-dev-server --hot --progress --colors"</span></span>,
+    "<span class="hljs-attribute">web-server</span>": <span class="hljs-value"><span class="hljs-string">"http-server -p 3000 ."</span></span>,
+    "<span class="hljs-attribute">start</span>": <span class="hljs-value"><span class="hljs-string">"npm run webpack-server &amp; npm run web-server"</span>
+  </span>}</span>,
+"<span class="hljs-attribute">devDependencies</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">babel-core</span>": <span class="hljs-value"><span class="hljs-string">"^6.3.21"</span></span>,
+    "<span class="hljs-attribute">babel-loader</span>": <span class="hljs-value"><span class="hljs-string">"^6.2.0"</span></span>,
+    "<span class="hljs-attribute">babel-preset-es2015</span>": <span class="hljs-value"><span class="hljs-string">"^6.3.13"</span></span>,
+    "<span class="hljs-attribute">babel-preset-react</span>": <span class="hljs-value"><span class="hljs-string">"^6.3.13"</span></span>,
+    "<span class="hljs-attribute">babel-preset-stage-0</span>": <span class="hljs-value"><span class="hljs-string">"^6.3.13"</span></span>,
+    "<span class="hljs-attribute">css-loader</span>": <span class="hljs-value"><span class="hljs-string">"^0.23.0"</span></span>,
+    "<span class="hljs-attribute">eslint</span>": <span class="hljs-value"><span class="hljs-string">"^1.10.3"</span></span>,
+    "<span class="hljs-attribute">eslint-config-google</span>": <span class="hljs-value"><span class="hljs-string">"^0.3.0"</span></span>,
+    "<span class="hljs-attribute">eslint-plugin-react</span>": <span class="hljs-value"><span class="hljs-string">"^3.13.1"</span></span>,
+    "<span class="hljs-attribute">file-loader</span>": <span class="hljs-value"><span class="hljs-string">"^0.8.5"</span></span>,
+    "<span class="hljs-attribute">http-server</span>": <span class="hljs-value"><span class="hljs-string">"^0.8.0"</span></span>,
+    "<span class="hljs-attribute">img-loader</span>": <span class="hljs-value"><span class="hljs-string">"^1.2.0"</span></span>,
+    "<span class="hljs-attribute">node-sass</span>": <span class="hljs-value"><span class="hljs-string">"^3.2.0"</span></span>,
+    "<span class="hljs-attribute">react</span>": <span class="hljs-value"><span class="hljs-string">"^0.14.3"</span></span>,
+    "<span class="hljs-attribute">react-dom</span>": <span class="hljs-value"><span class="hljs-string">"^0.14.3"</span></span>,
+    "<span class="hljs-attribute">sass-loader</span>": <span class="hljs-value"><span class="hljs-string">"^3.1.2"</span></span>,
+    "<span class="hljs-attribute">style-loader</span>": <span class="hljs-value"><span class="hljs-string">"^0.13.0"</span></span>,
+    "<span class="hljs-attribute">url-loader</span>": <span class="hljs-value"><span class="hljs-string">"^0.5.6"</span></span>,
+    "<span class="hljs-attribute">webpack</span>": <span class="hljs-value"><span class="hljs-string">"^1.11.0"</span></span>,
+    "<span class="hljs-attribute">webpack-dev-server</span>": <span class="hljs-value"><span class="hljs-string">"^1.10.1"</span>
+  </span>}
+</span>}</code></pre>
+
+<h3 id="references-">References:</h3>
+<ul>
+<li><a href="http://humaan.com/getting-started-with-webpack-and-react-es6-style/">http://humaan.com/getting-started-with-webpack-and-react-es6-style/</a></li>
+<li><a href="https://www.twilio.com/blog/2015/08/setting-up-react-for-es6-with-webpack-and-babel-2.html">https://www.twilio.com/blog/2015/08/setting-up-react-for-es6-with-webpack-and-babel-2.html</a></li>
+<li><a href="http://jslog.com/2014/10/02/react-with-webpack-part-1/">http://jslog.com/2014/10/02/react-with-webpack-part-1/</a></li>
+<li><a href="http://babeljs.io/blog/2015/10/29/6.0.0/">http://babeljs.io/blog/2015/10/29/6.0.0/</a></li>
+<li><a href="http://babeljs.io/blog/2015/06/07/react-on-es6-plus/">http://babeljs.io/blog/2015/06/07/react-on-es6-plus/</a></li>
+<li><a href="https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.yj1nha4nq">https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.yj1nha4nq</a></li>
+<li><a href="https://github.com/krasimir/react-webpack-starter">https://github.com/krasimir/react-webpack-starter</a></li>
+<li><a href="http://jamesknelson.com/webpack-made-simple-build-es6-less-with-autorefresh-in-26-lines/">http://jamesknelson.com/webpack-made-simple-build-es6-less-with-autorefresh-in-26-lines/</a></li>
+</ul>
+
+      <footer class="footer">
+        <p>&copy; <a href="//qianxueseng.com/guides/">前端笔记</a> 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="//static.qianxueseng.com/node_modules/highlight.js/lib/highlight.js?v=20151227"></script>
+    <script src="//static.qianxueseng.com/node_modules/jquery/dist/jquery.min.js?v=20151227"></script>
+    <script src="//static.qianxueseng.com/node_modules/tether/dist/js/tether.min.js?v=20151227"></script>
+    <script src="//static.qianxueseng.com/node_modules/bootstrap/dist/js/bootstrap.min.js?v=20151227"></script>
+  </body>
+</html>

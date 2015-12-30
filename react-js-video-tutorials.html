@@ -40,23 +40,64 @@
     </div>
 
     <div class="container markdown-body">
-      <h1 id="react-js">react.js</h1>
-<h2 id="-">学习路线</h2>
+      <h2 id="-">总论</h2>
 <ul>
-<li>先看官网的最弱智的例子 <a href="https://facebook.github.io/react/docs/tutorial.html">React Tutorial</a></li>
-<li>再看官网的flux的例子 <a href="https://facebook.github.io/flux/docs/todo-list.html#content">React Flux Todo List</a></li>
-<li>再看react router的例子 <a href="https://github.com/rackt/react-router">React Router</a></li>
-<li>再看redux的例子 <a href="https://github.com/rackt/redux">React Redux</a></li>
-<li>可以去写项目了</li>
+<li><strong>动手才是硬道理</strong>。在练习上花的时间越多，学习效果越好</li>
+<li>如果发现错误，记得这是一个wiki，请费心改正</li>
 </ul>
-<h2 id="-jsx-js-">练习一，最基本的配置，包括把jsx变成正常的js等等：</h2>
+<h2 id="-">有问题?</h2>
 <ul>
-<li><a href="./using-webpack-with-react-jsx-babel-es6-and-sass">using-webpack-with-react-jsx-babel-es6-and-sass</a></li>
+<li>常见问题的页面</li>
+<li>可以加入我们的<a href="http://qianxueseng.com/2015/10/how-to-start/">微信群</a></li>
 </ul>
-<h3 id="references-">References:</h3>
+<h2 id="-react-react-">模块一，React入门，用React实现百度首页</h2>
+<h3 id="-">笔记链接</h3>
 <ul>
-<li><a href="http://ryanclark.me/getting-started-with-react/">http://ryanclark.me/getting-started-with-react/</a></li>
-<li><a href="http://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/">http://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/</a></li>
+<li><a href="./linting-react-with-eslint-and-atom">linting-react-with-eslint-and-atom</a></li>
+</ul>
+<h3 id="-">视频链接</h3>
+<h3 id="-">目的</h3>
+<ul>
+<li>用JSX</li>
+<li>使用多个component</li>
+<li>使用props和state</li>
+<li>使用onClick和在component之前传递function</li>
+<li>使用propTypes和defaultProps</li>
+</ul>
+<h3 id="-">大纲</h3>
+<ul>
+<li>为什么和展示最终产品</li>
+<li>起始代码<ul>
+<li>clone<a href="https://github.com/qianxueseng-com/react-jsx-es6-babel6-sass-images-boilerplate">起始代码</a><pre><code class="hljs">git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/qianxueseng-<span class="hljs-keyword">com</span>/react-jsx-es6-babel6-sass-images-boilerplate react-baidu-homepage</code></pre></li>
+<li>解释起始代码的所有文件</li>
+<li>简单的解释Webpack</li>
+</ul>
+</li>
+<li>只用HTML实现所有功能</li>
+<li>用一个component</li>
+<li>用2个component但是不用props</li>
+<li>从root component用props传搜索按钮的文字</li>
+<li>安装Chrome插件</li>
+<li>绑定onClick<ul>
+<li>错误的做法，直接去拿value</li>
+<li>画一个示意图</li>
+<li>正确的做法，input在onChange的时候改变state</li>
+</ul>
+</li>
+<li>用3个component<ul>
+<li>把变量保持在root component</li>
+<li>通过把function传给child component来实现</li>
+</ul>
+</li>
+<li>可选：用propTypes和defaultProps</li>
+<li>总结</li>
+</ul>
+<h3 id="-">更多读物</h3>
+<ul>
+<li><a href="https://facebook.github.io/react/docs/tutorial.html">官方的教程</a></li>
+<li><a href="http://babeljs.io/blog/2015/06/07/react-on-es6-plus/">React on ES6</a></li>
+<li><a href="http://www.newmediacampaigns.com/blog/refactoring-react-components-to-es6-classes">Refactoring React Components to ES6 Classes
+</a></li>
 </ul>
 
       <footer class="footer">
